@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{{.Title}}</title>
+        <style type="text/css">
+            body { font-size:2.5em; }
+            .questionBloc { border:dashed 5px #faf7fa;  text-align:center; color:#FFF;  background:#18d06c; padding:0px 50px 00px 50px;  -moz-border-radius: 5px;  -webkit-border-radius: 5px; border-radius: 5px;}
+        </style>
+    </head>
+    <body> 
+        <div id="questionBloc" class="questionBloc">
+            <p id="question">{{.NameFirst}}</p>
+            <p id="answer">{{.NameSecond}}</p>
+            <p id="timer" style="text-align:right">5s</p>
+        </div>
+    </body> 
+</html>
+
+<script>
+    var remainingTime = 5;
+    var answerDuration = 3;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+        remainingTime--;
+
+        if (remainingTime <= 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "";
+            setTimeout(function(){
+                location="/";
+            },answerDuration * 1000);
+        } else {
+            if (remainingTime == 2) {
+                document.getElementById("questionBloc").style.background = "#ee9032";
+            }
+            if (remainingTime == 1) {
+                document.getElementById("questionBloc").style.background = "#f73b2b";
+            }
+            document.getElementById("timer").innerHTML = remainingTime + "s ";
+        }
+    }, 1000);
+</script>
