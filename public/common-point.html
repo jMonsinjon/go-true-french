@@ -3,15 +3,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{{.Title}}</title>
         <style type="text/css">
-            body { font-size:2.5em; }
-            .questionBloc { border:dashed 5px #faf7fa;  text-align:center; color:#FFF;  background:#18d06c; padding:0px 50px 00px 50px;  -moz-border-radius: 5px;  -webkit-border-radius: 5px; border-radius: 5px;}
+            body { font-size:8vh; height: 95%;}
+            .questionBloc { display: flex; flex-direction: column; align-items: center;  border:dashed 5px #faf7fa; text-align:center; color:#FFF;  height: 100%; background:#18d06c; padding:0px 50px 0px 50px;  -moz-border-radius: 10px;  -webkit-border-radius: 10px; border-radius: 10px;}
+            .questionLine { flex: 1; display: flex; align-items: center; vertical-align: middle; text-align: center; }
         </style>
     </head>
     <body> 
         <div id="questionBloc" class="questionBloc">
-            <p id="question">{{.NameFirst}}</p>
-            <p id="answer">{{.NameSecond}}</p>
-            <p id="timer" style="text-align:right">5s</p>
+            <p id="question" class="questionLine">{{.NameFirst}}</p>
+            <p id="answer" class="questionLine">{{.NameSecond}}</p>
+            <p id="timer" class="questionLine" style="text-align:right">5s</p>
         </div>
     </body> 
 </html>
@@ -29,7 +30,7 @@
             document.getElementById("timer").innerHTML = "";
             setTimeout(function(){
                 location="/";
-            },answerDuration * 1000);
+            },answerDuration * 100);
         } else {
             if (remainingTime == 2) {
                 document.getElementById("questionBloc").style.background = "#ee9032";
